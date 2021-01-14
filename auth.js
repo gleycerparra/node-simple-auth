@@ -43,6 +43,8 @@ app.post('/login', (req, res) => {
             accessToken
         });
     } else {
-        res.send('Username or password incorrect');
+        res.status(400).json({
+            error: 'Username or password incorrect' 
+        });
     }
 });
