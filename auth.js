@@ -6,11 +6,13 @@ const bodyParser = require('body-parser');
 const users = [
     {
         username: 'john',
-        password: 'password123admin',
+        password: 'secret',
+        email: 'johnsecret@test.com',
         role: 'admin'
     }, {
         username: 'anna',
-        password: 'password123member',
+        password: 'secret',
+        email: 'annasecret@test.com',
         role: 'member'
     }
 ];
@@ -36,6 +38,7 @@ app.post('/login', (req, res) => {
         const accessToken = jwt.sign({ username: user.username, role: user.role }, accessTokenSecret);
 
         res.json({
+            data: user,
             message: 'Logged successfully',
             accessToken
         });
